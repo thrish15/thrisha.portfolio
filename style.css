@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>S. Thrisha | Web Developer</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        /* =========================
+           RESET & GLOBAL STYLES
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #7c3aed;
+            --secondary: #a855f7;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #475569;
+            --white: #ffffff;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar {
+            max-width: 1150px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: transparent;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            padding: 130px 8% 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 50px;
+
+            background:
+                radial-gradient(
+                    circle at 80% 30%,
+                    #ede9fe 0,
+                    transparent 30%
+                ),
+                #ffffff;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .intro {
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .hero h1 {
+            color: var(--dark);
+            font-size: clamp(45px, 7vw, 75px);
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero h2 {
+            color: var(--dark-light);
+            font-size: 28px;
+            margin-bottom: 18px;
+        }
+
+        .hero-text {
+            max-width: 580px;
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .primary-btn {
+            color: white;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                var(--secondary)
+            );
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.25);
+        }
+
+        .secondary-btn {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .secondary-btn:hover {
+            color: white;
+            background: var(--primary);
+        }
+
+        /* Profile */
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-circle {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                var(--secondary)
+            );
+
+            box-shadow: 0 25px 60px rgba(124, 58, 237, 0.25);
+        }
+
+        .profile-circle span {
+            width: 260px;
+            height: 260px;
+
+            border-radius: 50%;
+            background: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 75px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* =========================
+           COMMON SECTION
+        ========================= */
+
+        .section {
+            padding: 90px 8%;
+        }
+
+        .section:nth-child(even) {
+            background: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title p {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: var(--dark);
+        }
+
+        .section-title h2 span {
+            color: var(--primary);
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-container {
+            max-width: 1050px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+
+            gap: 35px;
+        }
+
+        .about-card,
+        .details-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+
+            border: 1px solid var(--border);
+
+            box-shadow:
+                0 10px 30px rgba(15, 23, 42, 0.05);
+        }
+
+        .about-card h3 {
+            color: var(--dark);
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            margin-bottom: 15px;
+        }
+
+        .detail {
+            padding: 15px 0;
+
+            display: flex;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .detail:last-child {
+            border-bottom: none;
+        }
+
+        .detail strong {
+            color: var(--dark);
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-container {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: 30px 22px;
+
+            border-radius: 15px;
+            background: white;
+
+            border: 1px solid var(--border);
+
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 15px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #ede9fe;
+            color: var(--primary);
+
+            border-radius: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 18px;
+        }
+
+        .skill-card h3 {
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .skill-card p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 7px;
+
+            border-radius: 10px;
+            background: #e2e8f0;
+
+            overflow: hidden;
+        }
+
+        .skill-bar span {
+            display: block;
+            height: 100%;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects-container {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .project-card {
+            padding: 30px;
+
+            border-radius: 15px;
+            background: white;
+
+            border: 1px solid var(--border);
+
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 15px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .project-number {
+            color: var(--primary);
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            color: var(--dark);
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .project-tags span {
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            color: var(--primary);
+            background: #f3e8ff;
+
+            font-size: 12px;
+        }
+
+        .project-link {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-container {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            color: var(--dark);
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info > p {
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            padding: 15px 0;
+
+            border-bottom: 1px solid var(--border);
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-item strong {
+            color: var(--dark);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            padding: 14px;
+
+            font-family: inherit;
+            font-size: 14px;
+
+            outline: none;
+
+            resize: vertical;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .contact-form button {
+            align-self: flex-start;
+        }
+
+        #formMessage {
+            color: #16a34a;
+            font-weight: 500;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 25px 8%;
+
+            background: var(--dark);
+            color: #cbd5e1;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                text-align: center;
+
+                flex-direction: column-reverse;
+
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .profile-circle {
+                width: 240px;
+                height: 240px;
+            }
+
+            .profile-circle span {
+                width: 195px;
+                height: 195px;
+
+                font-size: 55px;
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+
+                top: 70px;
+                left: 0;
+
+                width: 100%;
+
+                background: white;
+
+                flex-direction: column;
+
+                text-align: center;
+
+                gap: 0;
+
+                display: none;
+
+                box-shadow:
+                    0 10px 20px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 15px;
+
+                border-bottom:
+                    1px solid var(--border);
+            }
+
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 70px 6%;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                S<span>.</span>Thrisha
+            </div>
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#skills">Skills</a>
+                </li>
+
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- =========================
+         HOME
+    ========================== -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <p class="intro">
+                Hello, I'm
+            </p>
+
+            <h1>
+                S. <span>Thrisha</span>
+            </h1>
+
+            <h2>
+                Web Developer
+            </h2>
+
+            <p class="hero-text">
+                I create modern, responsive and user-friendly
+                websites using HTML, CSS and JavaScript.
+                I am passionate about web development and
+                learning new technologies.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#projects"
+                    class="btn primary-btn"
+                >
+                    View My Work
+                </a>
+
+                <a
+                    href="#contact"
+                    class="btn secondary-btn"
+                >
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <div class="profile-circle">
+                <span>ST</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section id="about" class="section">
+
+        <div class="section-title">
+
+            <p>
+                Get To Know Me
+            </p>
+
+            <h2>
+                About <span>Me</span>
+            </h2>
+
+        </div>
+
+
+        <div class="about-container">
+
+            <div class="about-card">
+
+                <h3>
+                    Who I Am
+                </h3>
+
+                <p>
+                    I'm S. Thrisha, a passionate web development
+                    enthusiast interested in creating beautiful
+                    and functional websites.
+                </p>
+
+                <p>
+                    I enjoy learning new technologies and
+                    improving my development skills. My goal is
+                    to create websites that are responsive,
+                    accessible and easy to use.
+                </p>
+
+            </div>
+
+
+            <div class="details-card">
+
+                <div class="detail">
+                    <strong>Name</strong>
+                    <span>S. Thrisha</span>
+                </div>
+
+                <div class="detail">
+                    <strong>Profession</strong>
+                    <span>Web Developer</span>
+                </div>
+
+                <div class="detail">
+                    <strong>Location</strong>
+                    <span>India</span>
+                </div>
+
+                <div class="detail">
+                    <strong>Email</strong>
+                    <span>your-email@example.com</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SKILLS
+    ========================== -->
+
+    <section id="skills" class="section skills-section">
+
+        <div class="section-title">
+
+            <p>
+                What I Know
+            </p>
+
+            <h2>
+                My <span>Skills</span>
+            </h2>
+
+        </div>
+
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    HTML
+                </div>
+
+                <h3>
+                    HTML5
+                </h3>
+
+                <p>
+                    Creating well-structured and semantic
+                    web pages.
+                </p>
+
+                <div class="skill-bar">
+                    <span style="width: 90%;"></span>
+                </div>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    CSS
+                </div>
+
+                <h3>
+                    CSS3
+                </h3>
+
+                <p>
+                    Designing responsive and attractive
+                    user interfaces.
+                </p>
+
+                <div class="skill-bar">
+                    <span style="width: 85%;"></span>
+                </div>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    JS
+                </div>
+
+                <h3>
+                    JavaScript
+                </h3>
+
+                <p>
+                    Adding interactive and dynamic
+                    functionality.
+                </p>
+
+                <div class="skill-bar">
+                    <span style="width: 75%;"></span>
+                </div>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    UI
+                </div>
+
+                <h3>
+                    Responsive Design
+                </h3>
+
+                <p>
+                    Building websites that work on
+                    mobile and desktop.
+                </p>
+
+                <div class="skill-bar">
+                    <span style="width: 80%;"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECTS
+    ========================== -->
+
+    <section id="projects" class="section">
+
+        <div class="section-title">
+
+            <p>
+                My Recent Work
+            </p>
+
+            <h2>
+                My <span>Projects</span>
+            </h2>
+
+        </div>
+
+
+        <div class="projects-container">
+
+            <div class="project-card">
+
+                <div class="project-number">
+                    01
+                </div>
+
+                <h3>
+                    Personal Portfolio
+                </h3>
+
+                <p>
+                    A responsive personal portfolio website
+                    created using HTML, CSS and JavaScript.
+                </p>
+
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <a
+                    href="#"
+                    class="project-link"
+                >
+                    View Project →
+                </a>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">
+                    02
+                </div>
+
+                <h3>
+                    Landing Page
+                </h3>
+
+                <p>
+                    A modern landing page with a clean layout,
+                    responsive design and interactive elements.
+                </p>
+
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <a
+                    href="#"
+                    class="project-link"
+                >
+                    View Project →
+                </a>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">
+                    03
+                </div>
+
+                <h3>
+                    To-Do App
+                </h3>
+
+                <p>
+                    A simple JavaScript application for adding,
+                    completing and deleting daily tasks.
+                </p>
+
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <a
+                    href="#"
+                    class="project-link"
+                >
+                    View Project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section id="contact" class="section contact-section">
+
+        <div class="section-title">
+
+            <p>
+                Let's Connect
+            </p>
+
+            <h2>
+                Contact <span>Me</span>
+            </h2>
+
+        </div>
+
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+
+                <h3>
+                    Let's Work Together
+                </h3>
+
+                <p>
+                    Have a project idea or want to connect?
+                    Feel free to send me a message.
+                </p>
+
+
+                <div class="contact-item">
+
+                    <strong>
+                        Email
+                    </strong>
+
+                    <span>
+                        your-email@example.com
+                    </span>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <strong>
+                        Phone
+                    </strong>
+
+                    <span>
+                        +91 XXXXX XXXXX
+                    </span>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <strong>
+                        Location
+                    </strong>
+
+                    <span>
+                        India
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <form
+                id="contactForm"
+                class="contact-form"
+            >
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <textarea
+                    id="message"
+                    rows="6"
+                    placeholder="Your Message"
+                    required
+                ></textarea>
+
+                <button
+                    type="submit"
+                    class="btn primary-btn"
+                >
+                    Send Message
+                </button>
+
+                <p id="formMessage"></p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © <span id="year"></span>
+            S. Thrisha. All Rights Reserved.
+        </p>
+
+        <div class="social-links">
+
+            <a href="#">
+                GitHub
+            </a>
+
+            <a href="#">
+                LinkedIn
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        // Mobile Navigation
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        menuBtn.addEventListener("click", function () {
+
+            navLinks.classList.toggle("active");
+
+            if (navLinks.classList.contains("active")) {
+
+                menuBtn.textContent = "✕";
+
+            } else {
+
+                menuBtn.textContent = "☰";
+
+            }
+
+        });
+
+
+        // Close menu after clicking a link
+
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    navLinks.classList.remove("active");
+
+                    menuBtn.textContent = "☰";
+
+                });
+
+            });
+
+
+        // Contact Form
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        const formMessage =
+            document.getElementById("formMessage");
+
+
+        contactForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                const name =
+                    document
+                        .getElementById("name")
+                        .value
+                        .trim();
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+                const message =
+                    document
+                        .getElementById("message")
+                        .value
+                        .trim();
+
+
+                if (
+                    name === "" ||
+                    email === "" ||
+                    message === ""
+                ) {
+
+                    formMessage.style.color =
+                        "#dc2626";
+
+                    formMessage.textContent =
+                        "Please fill in all fields.";
+
+                    return;
+
+                }
+
+
+                formMessage.style.color =
+                    "#16a34a";
+
+                formMessage.textContent =
+                    "Thank you! Your message has been submitted.";
+
+
+                contactForm.reset();
+
+            }
+        );
+
+
+        // Current Year
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        // Scroll Animation
+
+        const cards =
+            document.querySelectorAll(
+                ".skill-card, " +
+                ".project-card, " +
+                ".about-card, " +
+                ".details-card"
+            );
+
+
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.style.opacity = "1";
+
+                            entry.target.style.transform =
+                                "translateY(0)";
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+
+        cards.forEach(function (card) {
+
+            card.style.opacity = "0";
+
+            card.style.transform =
+                "translateY(25px)";
+
+            card.style.transition =
+                "opacity 0.6s ease, " +
+                "transform 0.6s ease";
+
+            observer.observe(card);
+
+        });
+
+    </script>
+
+</body>
+</html>
